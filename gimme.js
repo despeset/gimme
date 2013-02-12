@@ -27,7 +27,7 @@
         while( window.hasOwnProperty(key) ){
             key = '___gimmeSomethingNative' + Math.floor( 100 + Math.random() * 200 ) + ~new Date()
         }
-        // inject iframe & assign Array to our transport key in this window.
+        // inject iframe & assign the specified objectType to our transport key in this window.
         var iframe = document.createElement("iframe")
             iframe.style.display = "none"
             iframe.id = key
