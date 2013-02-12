@@ -6,21 +6,21 @@
  *  https://github.com/danielmendel/gimme
  * 
  *  example:
- *	
- *	  var myString = gimme('String');
- *	  var foo = new myString( 'bar' );
+ *  
+ *    var myString = gimme('String');
+ *    var foo = new myString( 'bar' );
  *    var bar = 'hmm';
- *	  foo instanceof String   				// false
- *    foo instanceof myString 				// true
+ *    foo instanceof String                 // false
+ *    foo instanceof myString               // true
  *
  *    myString.prototype.hello = 'world!';
- *    foo.hello 			  				// 'world!'
- *    bar.hello				  				// undefined
+ *    foo.hello                             // 'world!'
+ *    bar.hello                             // undefined
  *
  **/
 !function( scope ){
-	
-	function gimme( objectType ){
+    
+    function gimme( objectType ){
         // generate our temporary global transport key
         var key = '___gimmeSomethingNative';
         // collision protection
@@ -40,14 +40,14 @@
         // clean the global namespace
         delete window[key]
         return borrowedObj
-	}
+    }
 
-	// play nice
-	var namespaceBackup = scope.gimme
-	scope.gimme = gimme
-	scope.gimme.noConflict = function(){
-		scope.gimme = namespaceBackup
-		return gimme
-	}
+    // play nice
+    var namespaceBackup = scope.gimme
+    scope.gimme = gimme
+    scope.gimme.noConflict = function(){
+        scope.gimme = namespaceBackup
+        return gimme
+    }
 
 }( window );
